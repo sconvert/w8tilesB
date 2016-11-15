@@ -1,4 +1,10 @@
-Adaptation de 
+#Ressources
+[Vue](https://vuejs.org/v2/guide/)
+[Axios](https://github.com/mzabriskie/axios)
+[Vue-router](https://github.com/vuejs/vue-router)
+[JsonPlaceholder](https://jsonplaceholder.typicode.com/)
+
+Adaptation de
 windows8-animations
 ===================
 
