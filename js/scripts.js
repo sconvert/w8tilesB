@@ -1,27 +1,69 @@
-(function(){
-    
-  //listen for when a tile is clicked
-  //retrieve the type of page it opens from its data attribute
-  //based on the type of page, add corresponding class to page and fade the dashboard
-  $('.tile').each(function(){
-    var $this= $(this),
-        page = $this.data('page-name');
-        
-    $this.on('click',function(){
-      $('.'+page).addClass('openpage');
-    });
-  });
+var firstone = new Vue({
+  el: '#firstmessage',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+})
 
-  //when a close button is clicked:
-  //close the page
-  //wait till the page is closed and fade dashboard back in
-  $('.r-close-button').click(function(){
-      $(this).parent().addClass('slidePageLeft')
-          .one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-              if ($(this).hasClass('slidePageLeft')) { // Petit test pour éviter la fermeture intempestive de la tile si trop d'appels de l'événement animationend. (?)
-                $(this).removeClass('slidePageLeft').removeClass('openpage');
-                }
-              });
-  });
+var ex2 = new Vue({
+  el: '#example-2',
+  data: {
+    message2: ''
+  },
+  created: function () {
+    // `this` points to the vm instance
+    //console.log('Message 2 created: ' + this.message2);
+  },
+  mounted: function () {
+    // `this` points to the vm instance
+  //  console.log('Message 2 mounted: ' + this.message2);
+  },
+  updated: function () {
+    // `this` points to the vm instance
+  //  console.log('Message 2 updated: ' + this.message2);
+  },
+  destroyed: function () {
+    // `this` points to the vm instance
+    console.log('Message 2 destroyed: ' + this.message2);
+  }
+})
 
-})();
+Vue.component('todo-item', {
+    // The todo-item component now accepts a
+    // "prop", which is like a custom attribute.
+    // This prop is called todo.
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+  })
+
+
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { text: 'Vegetables' },
+      { text: 'Cheese' },
+      { text: 'Whatever else humans are supposed to eat' }
+    ]
+  }
+})
+
+var test3 = new Vue({
+  el: "#test3",
+  data: {
+    dynamicId: ""
+  }
+})
+var ex3 = new Vue({
+  el: '#example-1',
+  data: {
+    checked: false
+  }
+})
+
+
+$("#test").on("click", function() {
+  ex2.message2 = "Test ok"; // ok
+  test3.dynamicId = "Toto";
+ //  $("#zut").val("test2"); // Marche pas
+})

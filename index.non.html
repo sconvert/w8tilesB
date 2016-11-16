@@ -8,8 +8,8 @@
    <!--  <link rel="stylesheet" href="css/demo-styles.css" /> -->
 <link rel="stylesheet" href="css/styles.css" />
 <link rel="stylesheet" href="css/transition.css" />
-  <script src="js/modernizr-1.5.min.js"></script>
 
+  <script src="js/modernizr-1.5.min.js"></script>
 </head>
 
 <body>
@@ -22,14 +22,19 @@
 
 <!-- classnames for the pages should include: 1) type of page 2) page name-->
 <!-- Pages contenu. -->
-  <transition name="tileW8">
-    <div :class="{ 'openpage': openpage, 'slidePageLeft': slidePageLeft }" class="r-page bastide-content-page" id="bastide-content">
-      <div v-on:click="closeTile" class="my-close-button close-button">x</div>
-      THE PAGE
+  <div id="bastide-content">
+    <!--<button v-on:click="show = !show">Test</button> -->
 
-    </div>
-  </transition>
-  <div class="r-page bastide-access-page">
+    <transition name="tileW8">
+      <div v-if="tileopened" class="bastide-content-page r-page"> <!-- openpage r-page -->
+        <div v-on:click="closeTile" class="my-close-button close-button">x</div>
+          THE PAGE
+      </div>
+    </transition>
+  </div>
+
+
+<!--  <div class="r-page bastide-access-page">
     <h2 class="page-title">Access Bastide</h2>
     <div class="close-button r-close-button">x</div>
   </div>
@@ -44,7 +49,7 @@
   <div class="r-page bastide-discussion">
     <h2 class="page-title">Discussion</h2>
     <div class="close-button r-close-button">x</div>
-  </div>
+  </div> -->
 
 
 <!--each tile should specify what page type it opens (to determine which animation) and the corresponding page name it should open-->
@@ -90,7 +95,7 @@
       </div>
 
   </ul>
-<div id="test">Test</div>
+
   </div><!--end dashboard-->
 
 </div>
