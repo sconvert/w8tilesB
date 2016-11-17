@@ -108,7 +108,7 @@ header a {
   font-weight: 300;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 35px; /* 0 */
   left:0;
   bottom:0;
   opacity: 0;
@@ -126,14 +126,6 @@ header a {
   transform: rotateY(-90deg) translateZ(5em)
 }
 
-/*.s-page {
-  color: white;
-  z-index: 10;
-  text-align: center;
-  font-size: 2em;
-  font-weight: 300;
-}*/
-
 .page-content{
   overflow-y:auto;
   max-height:100%;
@@ -141,8 +133,9 @@ header a {
   padding:.6em;
   text-align:left;
 }
+
 /*default colors just in case you don't define these colors on the tiles*/
-.s-page, .r-page{
+.r-page{
   background-color: white;
   color:black;
 }
@@ -285,10 +278,6 @@ header a {
   transform: translateY(-100%)
 }
 
-.tile-1 p {
-  font-size: 1.3em
-}
-
 /* slide text inside tile to the right*/
 
 .slideTextRight div:first-child {
@@ -339,7 +328,10 @@ header a {
 }
 
 .faces div {
-  display: block;
+  display: block;/*.tile-1 p {
+  font-size: 1.3em
+}*/
+
   position: absolute;
   top: 0;
   left: 0;
@@ -356,6 +348,7 @@ header a {
   background-color: #455962;
   color: #ddd;
 }
+
 .rotate3dX .front {
   background-color: #455962;
   color: #ddd
@@ -408,57 +401,6 @@ header a {
   transform: rotateX( 180deg )
 }
 
-.s-page {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: -150%;
-  color: white;
-  text-align: center;
-  font-weight: 300;
-  z-index: 1
-}
-
-.s-page p {
-  font-size: 6em;
-  margin-top: 2em;
-  font-weight: 100
-}
-
-.myform {
-  margin: 2em auto;
-  width: 300px
-}
-
-input {
-  display: block;
-  line-height: 40px;
-  padding: 0 10px;
-  width: 260px;
-  height: 40px;
-  float: left
-}
-
-#unlock-button {
-  background: black;
-  color: white;
-  font-size: 1em;
-  float: left;
-  border: 0;
-  height: 2.5em;
-  width: 2.5em;
-  padding: .3125em;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 2px
-}
-
-.delete-button {
-  font-size: 0.7em;
-  float: right;
-  line-height: 25px
-}
 
 /*======================= media queries =======================*/
 
@@ -512,277 +454,37 @@ input {
 }
 
 
-/* prefixed animation keyframes */
+/****************************************************
+BASTIDE
+****************************************************/
 
-
-@-webkit-keyframes fadeOutBack {
-  0% {
-    -webkit-transform: translateX(-2em) scale(1);
-    transform: translateX(-2em) scale(1);
-    opacity: 1
-  }
-
-  70% {
-    -webkit-transform: translateZ(-5em) scale(0.6);
-    transform: translateZ(-5em) scale(0.6);
-    opacity: 0.5
-  }
-
-  95% {
-    -webkit-transform: translateZ(-5em) scale(0.6);
-    transform: translateZ(-5em) scale(0.6);
-    opacity: 0.5
-  }
-
-  100% {
-    -webkit-transform: translateZ(-5em) scale(0);
-    transform: translateZ(-5em) scale(0);
-    opacity: 0
-  }
+.tiletitle {
+  font-weight: bold;
 }
 
-@-webkit-keyframes fadeInForward {
-  0% {
-    -webkit-transform: translateZ(-5em) scale(0);
-    transform: translateZ(-5em) scale(0);
-    opacity: 0
-  }
-
-  100% {
-    -webkit-transform: translateZ(0) scale(1);
-    transform: translateZ(0) scale(1);
-    opacity: 1
-  }
+.menuBastideDiv {
+  display: inline-block;
 }
 
-@-webkit-keyframes rotatePageInFromRight {
-  0% {
-    -webkit-transform: rotateY(-90deg) translateZ(5em);
-    transform: rotateY(-90deg) translateZ(5em);
-    opacity: 0
-  }
-
-  30% {
-    opacity: 1
-  }
-
-  100% {
-    -webkit-transform: rotateY(0deg) translateZ(0);
-    transform: rotateY(0deg) translateZ(0);
-    opacity: 1
-  }
+.menuBastideDiv ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-@-webkit-keyframes slidePageLeft {
-  0% {
-    left: 0;
-    -webkit-transform: rotateY(0deg) translateZ(0);
-    transform: rotateY(0deg) translateZ(0);
-    opacity: 1
-  }
-
-  70% {
-    opacity: 1
-  }
-
-  100% {
-    opacity: 0;
-    left: -150%;
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg)
-  }
+.menuBastideDiv li {
+  float: left;
 }
 
-@-webkit-keyframes slidePageInFromLeft {
-  0% {
-    opacity: 0
-  }
-
-  30% {
-    opacity: 1
-  }
-
-  100% {
-    opacity: 1;
-    left: 0
-  }
+.menuBastideDiv li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0 16px;
+    text-decoration: none;
 }
 
-@-webkit-keyframes slidePageBackLeft {
-  0% {
-    opacity: 1;
-    left: 0;
-    -webkit-transform: scale(0.95);
-    transform: scale(0.95)
-  }
-
-  10% {
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9)
-  }
-
-  70% {
-    opacity: 1
-  }
-
-  100% {
-    opacity: 0;
-    left: -150%
-  }
-}
-
-@-o-keyframes fadeOutBack {
-  0% {
-    -webkit-transform: translateX(-2em) scale(1);
-    -ms-transform: translateX(-2em) scale(1);
-    -o-transform: translateX(-2em) scale(1);
-    transform: translateX(-2em) scale(1);
-    opacity: 1
-  }
-
-  70% {
-    -webkit-transform: translateZ(-5em) scale(0.6);
-    -ms-transform: translateZ(-5em) scale(0.6);
-    -o-transform: translateZ(-5em) scale(0.6);
-    transform: translateZ(-5em) scale(0.6);
-    opacity: 0.5
-  }
-
-  95% {
-    -webkit-transform: translateZ(-5em) scale(0.6);
-    -ms-transform: translateZ(-5em) scale(0.6);
-    -o-transform: translateZ(-5em) scale(0.6);
-    transform: translateZ(-5em) scale(0.6);
-    opacity: 0.5
-  }
-
-  100% {
-    -webkit-transform: translateZ(-5em) scale(0);
-    -ms-transform: translateZ(-5em) scale(0);
-    -o-transform: translateZ(-5em) scale(0);
-    transform: translateZ(-5em) scale(0);
-    opacity: 0
-  }
-}
-
-@-o-keyframes fadeInForward {
-  0% {
-    -webkit-transform: translateZ(-5em) scale(0);
-    -ms-transform: translateZ(-5em) scale(0);
-    -o-transform: translateZ(-5em) scale(0);
-    transform: translateZ(-5em) scale(0);
-    opacity: 0
-  }
-
-  100% {
-    -webkit-transform: translateZ(0) scale(1);
-    -ms-transform: translateZ(0) scale(1);
-    -o-transform: translateZ(0) scale(1);
-    transform: translateZ(0) scale(1);
-    opacity: 1
-  }
-}
-
-@-o-keyframes rotatePageInFromRight {
-  0% {
-    -webkit-transform: rotateY(-90deg) translateZ(5em);
-    -ms-transform: rotateY(-90deg) translateZ(5em);
-    -o-transform: rotateY(-90deg) translateZ(5em);
-    transform: rotateY(-90deg) translateZ(5em);
-    opacity: 0
-  }
-
-  30% {
-    opacity: 1
-  }
-
-  100% {
-    -webkit-transform: rotateY(0deg) translateZ(0);
-    -ms-transform: rotateY(0deg) translateZ(0);
-    -o-transform: rotateY(0deg) translateZ(0);
-    transform: rotateY(0deg) translateZ(0);
-    opacity: 1
-  }
-}
-
-@-o-keyframes slidePageLeft {
-  0% {
-    left: 0;
-    -webkit-transform: rotateY(0deg) translateZ(0);
-    -ms-transform: rotateY(0deg) translateZ(0);
-    -o-transform: rotateY(0deg) translateZ(0);
-    transform: rotateY(0deg) translateZ(0);
-    opacity: 1
-  }
-
-  70% {
-    opacity: 1
-  }
-
-  100% {
-    opacity: 0;
-    left: -150%;
-    -webkit-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    transform: rotateY(0deg)
-  }
-}
-
-@-o-keyframes slidePageInFromLeft {
-  0% {
-    opacity: 0
-  }
-
-  30% {
-    opacity: 1
-  }
-
-  100% {
-    opacity: 1;
-    left: 0
-  }
-}
-
-@-o-keyframes slidePageBackLeft {
-  0% {
-    opacity: 1;
-    left: 0;
-    -webkit-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -o-transform: scale(0.95);
-    transform: scale(0.95)
-  }
-
-  10% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    -o-transform: scale(0.9);
-    transform: scale(0.9)
-  }
-
-  70% {
-    opacity: 1
-  }
-
-  100% {
-    opacity: 0;
-    left: -150%
-  }
-}
-
-@-o-keyframes start {
-  0% {
-    -webkit-transform: translateX(200px);
-    opacity: 0
-  }
-
-  50% {
-    opacity: 1
-  }
-
-  100% {
-    -webkit-transform: translateX(0);
-    opacity: 1
-  }
+.menuBastideDiv li a:hover {
+    background-color: cornFlowerBlue;
 }

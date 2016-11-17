@@ -5,102 +5,92 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>Windows-8-like Animations with CSS3 and jQuery</title>
 
-   <!--  <link rel="stylesheet" href="css/demo-styles.css" /> -->
-<link rel="stylesheet" href="css/styles.css" />
-<link rel="stylesheet" href="css/transition.css" />
-  <script src="js/modernizr-1.5.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/transition.css" />
 
+<!--  <script src="js/modernizr-1.5.min.js"></script> -->
 </head>
 
 <body>
- <header>
-   Bastide Header
 
- </header>
-  <!--===============================Start Demo====================================================-->
-<div class="demo-wrapper">
-
-<!-- classnames for the pages should include: 1) type of page 2) page name-->
-<!-- Pages contenu. -->
-  <transition name="tileW8">
-    <div :class="{ 'openpage': openpage, 'slidePageLeft': slidePageLeft }" class="r-page bastide-content-page" id="bastide-content">
-      <div v-on:click="closeTile" class="my-close-button close-button">x</div>
-      THE PAGE
-
+  <header>
+    <div id="menuBastide" class="menuBastideDiv">
+      <!--<mbc v-bind:my-message="myMessage">-->
+        <ul>
+          <li>Bastide Header</li>
+          <template v-for='(item, index) in menulist'>
+            <li><a href="">{{ item.titre }}</a></li>
+          </template>
+        </ul>
+      <!--</mbc>-->
     </div>
-  </transition>
-  <div class="r-page bastide-access-page">
-    <h2 class="page-title">Access Bastide</h2>
-    <div class="close-button r-close-button">x</div>
-  </div>
-  <div class="r-page bastide-outil-aide">
-    <h2 class="page-title">Outils d'aide à la décision</h2>
-    <div class="close-button r-close-button">x</div>
-  </div>
-  <div class="r-page bastide-historique">
-    <h2 class="page-title">Historique des patients confiés</h2>
-    <div class="close-button r-close-button">x</div>
-  </div>
-  <div class="r-page bastide-discussion">
-    <h2 class="page-title">Discussion</h2>
-    <div class="close-button r-close-button">x</div>
-  </div>
+  </header>
 
-
-<!--each tile should specify what page type it opens (to determine which animation) and the corresponding page name it should open-->
-  <div class="dashboard clearfix">
-    <!-- BASTIDE série tuiles menu haut -->
-    <ul class="tiles" id="BastideTiles">
-      <div class="col1bmh clearfix">
-        <li v-on:click="openTile" class="tileBastide tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access-page" id="tile1">
-          <div>Bastide access</div>
-          <div id="firstmessage"><p>{{ message }}</p></div>
-        </li>
+  <div class="demo-wrapper">
+    <div  id="bastideContent">
+      <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page"> <!-- r-page  -->
+      
+          <!-- <div v-if="tileopened" :class= "{'bopenedpage': bopenedpage, 'slidePageLeft': slidePageLeft}"  class=""> -->
+          <div v-on:click="closeTile" class="my-close-button close-button">x</div>
+          THE PAGE
+            <!-- </div> 
+          </transition>-->
       </div>
+</div>
+<!-- 
+  TILES
+-->  
 
-      <div class="col2bmh clearfix">
-        <li class="tile tile-small tile tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil-aide">
-          <div>Outil d'aide à la décision</div>
-          <div id="app-7">
-            <ol>
-              <!-- Now we provide each todo-item with the todo object    -->
-              <!-- it's representing, so that its content can be dynamic -->
-              <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-            </ol>
-          </div>
-        </li>
-        <li class="tile tile-small last tile-3bmh" data-page-type="r-page" data-page-name="bastide-historique">
-          <div>Historique des patients confiés</div>
-          <div id="example-1">
-            <input type="checkbox" id="checkbox" v-model="checked">
-            <label for="checkbox">{{ checked }}</label>
-          </div>
-        </li>
-      </div>
-
-      <div class="col3bmh clearfix">
-        <li class="tile tile-big last tile-4bmh" data-page-type="r-page" data-page-name="bastide-discussion">
-          <div id="test3"><div v-bind:id="dynamicId">Discussion</div></div>
-          <div id="example-2">
-            <input v-model="message2" placeholder="edit me" id="zut">
-            <p>Message is: {{ message2 }}</p>
+    <div class="dashboard clearfix">
+      <div id="menutiles">
+      <!-- BASTIDE série tuiles menu haut -->
+      <transition name="tile-fade">
+        <ul class="tiles" id="BastideTiles" v-if="tileVisible">
+          <div class="col1bmh clearfix">
+            <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access-page" id="tile1">
+              <p class="tiletitle">Bastide access</p>
+              <p class="tilecontent"></p>
+            </li>
           </div>
 
-        </li>
-      </div>
+          <div class="col2bmh clearfix">
+            <li v-on:click="openTile" class="tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil-aide">
+              <p class="tiletitle">Outil d'aide à la décision</p>
+              <p class="tilecontent">
+                Décision
+              </p>
+            </li>
+            <li v-on:click="openTile" class="tile tile-small last tile-3bmh" data-page-type="r-page" data-page-name="bastide-historique">
+              <p class="tiletitle">Historique des patients confiés</p>
+              <p class="tilecontent">
+                Historique
+              </p>
+            </li>
+          </div>
 
-  </ul>
-<div id="test">Test</div>
+          <div class="col3bmh clearfix">
+            <li v-on:click="openTile" class="tile tile-big last tile-4bmh" data-page-type="r-page" data-page-name="bastide-discussion">
+              <p class="tiletitle">Discussion</p>
+              <p class="tilecontent">
+                Blah blah
+              </p>
+
+            </li>
+          </div>
+      </ul>
+    </transition>
+  </div>
+  <!-- 
+   Pages contenu. 
+  -->
+
+
+
   </div><!--end dashboard-->
 
 </div>
 <!--====================================end demo wrapper================================================-->
   <script src="js/vendor/vue.js"></script>
-  <script src="js/vendor/axios.min.js"></script>
-
-  <script src="js/jquery-1.8.2.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="js/scriptsSarah.js"></script>
   <script src="js/scriptTiles.js"></script>
 </body>
 </html>
