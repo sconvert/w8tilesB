@@ -1,7 +1,7 @@
 var menuBastide = new Vue({
   el: "#menuBastide",
   data: {
-    menulist: [ /*
+    menulist: [ /* 
       { titre: 'toto' },
       { titre: 'titi'}
     */],
@@ -46,12 +46,6 @@ var pageContent = new Vue({
       menuBastide.menulist = {};
       menuTiles.tileVisible = true;
       this.slidePageLeft = true;
-    },
-    afterLeave: function(event) {
-      console.log("afterleave");
-    },
-    beforeEnter: function(event) {
-      console.log("beforeEnter");
     }
   }
 })
