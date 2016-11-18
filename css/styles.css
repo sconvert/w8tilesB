@@ -488,3 +488,8 @@ BASTIDE
 .menuBastideDiv li a:hover {
     background-color: cornFlowerBlue;
 }
+
+.tileBastide a {
+  text-decoration: none;
+  color: white;
+}

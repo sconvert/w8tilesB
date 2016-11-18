@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
-  <title>Windows-8-like Animations with CSS3 and jQuery</title>
+  <title>Vue + Router</title>
 
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/transition.css" />
@@ -13,82 +13,96 @@
 
 <body>
 
+  <span id="vueElement"> <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
+    <!-- span because div breaks div content... -->
+    
   <!-- 
     HEADER
   -->  
 
-  <header>
-    <div id="menuBastide" class="menuBastideDiv">
-        <ul>
-          <li>Bastide Header</li>
-          <template v-for='(item, index) in menulist'>
-            <li><a href="">{{ item.titre }}</a></li>
-          </template>
-        </ul>
-    </div>
-  </header>
-
-  <!-- 
-    PAGE CONTENU
-  -->
-
-  <div class="demo-wrapper">
-    <div  id="bastideContent">
-      <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page"> <!-- r-page  -->
-          <div v-on:click="closeTile" class="my-close-button close-button">x</div>
-          THE PAGE
-      </div>
-    </div>
-
-  <!-- 
-    TILES
-  -->  
-
-    <div class="dashboard clearfix">
-      <div id="menutiles">
-      <!-- BASTIDE série tuiles menu haut -->
-        <transition name="tile-fade">
-          <ul class="tiles" id="BastideTiles" v-if="tileVisible">
-            <div class="col1bmh clearfix">
-              <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access-page" id="tile1">
-                <p class="tiletitle">Bastide access</p>
-                <p class="tilecontent"></p>
-              </li>
-            </div>
-
-            <div class="col2bmh clearfix">
-              <li v-on:click="openTile" class="tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil-aide">
-                <p class="tiletitle">Outil d'aide à la décision</p>
-                <p class="tilecontent">
-                  Décision
-                </p>
-              </li>
-              <li v-on:click="openTile" class="tile tile-small last tile-3bmh" data-page-type="r-page" data-page-name="bastide-historique">
-                <p class="tiletitle">Historique des patients confiés</p>
-                <p class="tilecontent">
-                  Historique
-                </p>
-              </li>
-            </div>
-
-            <div class="col3bmh clearfix">
-              <li v-on:click="openTile" class="tile tile-big last tile-4bmh" data-page-type="r-page" data-page-name="bastide-discussion">
-                <p class="tiletitle">Discussion</p>
-                <p class="tilecontent">
-                  Blah blah
-                </p>
-
-              </li>
-            </div>
-            
+    <header>
+      <div id="menuBastide" class="menuBastideDiv">
+          <ul>
+            <li>Bastide Header</li>
+            <template v-for='(item, index) in menuElementsList'>
+              <li><a href="">{{ item.titre }}</a></li>
+            </template>
           </ul>
-        </transition>
-      </div> <!-- Menu tiles -->
-    </div><!--end dashboard-->
-  </div>
+      </div>
+    </header>
 
+    <!-- 
+      PAGE CONTENU
+    -->
+
+    <div class="demo-wrapper">
+      <div  id="bastideContent">
+        <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page"> <!-- r-page  -->
+            <div v-on:click="closeTile" class="my-close-button close-button">x</div>
+            <router-view></router-view>
+        </div>
+      </div>
+
+
+    <!-- 
+      TILES
+    -->  
+
+      <div class="dashboard clearfix">
+        <div id="menutiles">
+        <!-- BASTIDE série tuiles menu haut -->
+          <transition name="tile-fade">
+            <ul class="tiles" id="BastideTiles" v-if="tilesVisible">
+              <div class="col1bmh clearfix">
+                <router-link to="/bastide-access">
+                  <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access-page" id="tile1">
+                    <p class="tiletitle">Bastide access</p>
+                    <p class="tilecontent"></p>
+                  </li>
+                </router-link>
+              </div>
+
+              <div class="col2bmh clearfix">
+                <router-link to="/aide-decision">
+                  <li v-on:click="openTile" class="tileBastide tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil-aide">
+                    <p class="tiletitle">Outil d'aide à la décision</p>
+                    <p class="tilecontent">
+                      Décision
+                    </p>
+                  </li>
+                </router-link>
+
+                <router-link to="/historique-patients">
+                  <li v-on:click="openTile" class="tileBastide tile tile-small last tile-3bmh" data-page-type="r-page" data-page-name="bastide-historique">
+                    <p class="tiletitle">Historique des patients confiés</p>
+                    <p class="tilecontent">
+                      Historique
+                    </p>
+                  </li>
+                </router-link>
+              </div>
+
+              <div class="col3bmh clearfix">
+                <router-link to="/discussions">
+                  <li v-on:click="openTile" class="tileBastide tile tile-big last tile-4bmh" data-page-type="r-page" data-page-name="bastide-discussion">
+                    <p class="tiletitle">Discussion</p>
+                    <p class="tilecontent">
+                      Blah blah
+                    </p>
+                  </li>
+                </router-link>
+              </div>
+              
+            </ul>
+          </transition>
+        </div> <!-- Menu tiles -->
+      </div><!--end dashboard-->
+    </div>
+  </span> <!-- end vue element -->
 
   <script src="js/vendor/vue.js"></script>
+  <script src="js/vendor/vue-router.js"></script>
+  <script src="js/scriptRouter.js"></script>
   <script src="js/scriptTiles.js"></script>
 </body>
 </html>

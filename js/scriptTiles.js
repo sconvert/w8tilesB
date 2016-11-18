@@ -1,51 +1,41 @@
-var menuBastide = new Vue({
-  el: "#menuBastide",
+// Only one Vue because I couldn't use router with links in one Vue and content in another
+// Beside I couldn't find any reason why I shouldn't use only 1 Vue.
+
+var vueBastide = new Vue({
+  el: "#vueElement",
+
   data: {
-    menulist: [ /* 
+    menuElementsList: [ /* ex menulist
       { titre: 'toto' },
       { titre: 'titi'}
     */],
-    myMessage: 'Message from parent'
-  }
-})
-
-var menuTiles = new Vue({
-  el: '#menutiles',
-  data: {
-    liFromTiles: '',
-    tileVisible: true
+    tilesVisible: true,
+    tileW8: false,
+    slidePageLeft: false
   },
+
   methods: {
     openTile: function (event) {
       // 0- Supprimer (si 2nd ouverture) la class slidePageLeft
-      pageContent.slidePageLeft = false;
+      this.slidePageLeft = false;
       // 1- Mettre les items du menu dans le header
       var mylimenus = document.getElementById("menutiles"), itemsMenu=[];
       mylimenus = mylimenus.getElementsByTagName("li");
       for (i=0; i<mylimenus.length; i++) {
         itemsMenu[i] = { titre: mylimenus[i].getElementsByClassName("tiletitle")[0].innerHTML };
         }
-      menuBastide.menulist = itemsMenu;
+      this.menuElementsList = itemsMenu;
       // 2- Masquer les tiles
-      this.tileVisible = false;
+      this.tilesVisible = false;
       // 3- Afficher la page 
-      pageContent.tileW8 = true;
-    }
-  }
-})
-
-// THE PAGE CONTENT
-var pageContent = new Vue({
-  el: '#bastideContent',
-  data: {
-    tileW8: false,
-    slidePageLeft: false
-  },
-  methods: {
+      this.tileW8 = true;
+    },
     closeTile: function (event) {
-      menuBastide.menulist = {};
-      menuTiles.tileVisible = true;
+      this.menuElementsList = {};
+      this.tilesVisible = true;
       this.slidePageLeft = true;
     }
-  }
+  },
+  
+  router: bastideRouter
 })
