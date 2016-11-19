@@ -1,12 +1,6 @@
-// 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter and then call Vue.use(VueRouter).
-
 // 1. Define route components.
 // These can be imported from other files
-
-  const BastideAccess = { template: '<div>Bastide-access</div>' }
-  const AideDecision = { template: '<div>Aide-decision</div>' }
-  const HistoriquePatients = { template: '<div>Historique-patients</div>' }
-  const Discussions = { template: '<div>Discussions</div>' }
+  const BastidePage = { template: '<div>Bastide page {{ $route.params.pathparam }}</div>' }
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -14,10 +8,7 @@
 // Vue.extend(), or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-  { path: '/bastide-access', component: BastideAccess },
-  { path: '/aide-decision', component: AideDecision },
-  { path: '/historique-patients', component: HistoriquePatients },
-  { path: '/discussions', component: Discussions }
+  { path: '/:pathparam', component: BastidePage },
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -26,9 +17,3 @@ const routes = [
 const bastideRouter = new VueRouter({
   routes // short for routes: routes
 })
-
-// 4. Create and mount the root instance.
-// Make sure to inject the router with the router option to make the
-// whole app router-aware.
-
-// Now the app has started!

@@ -23,7 +23,7 @@
     <header>
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
-            <li>Bastide Header</li>
+            <li v-on:click="affectRoute">Bastide Header</li>
             <template v-for='(item, index) in menuElementsList'>
               <li><a href="">{{ item.titre }}</a></li>
             </template>
@@ -55,7 +55,7 @@
             <ul class="tiles" id="BastideTiles" v-if="tilesVisible">
               <div class="col1bmh clearfix">
                 <router-link to="/bastide-access">
-                  <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access-page" id="tile1">
+                  <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access" id="tile1">
                     <p class="tiletitle">Bastide access</p>
                     <p class="tilecontent"></p>
                   </li>
@@ -64,7 +64,7 @@
 
               <div class="col2bmh clearfix">
                 <router-link to="/aide-decision">
-                  <li v-on:click="openTile" class="tileBastide tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil-aide">
+                  <li v-on:click="openTile" class="tileBastide tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil">
                     <p class="tiletitle">Outil d'aide à la décision</p>
                     <p class="tilecontent">
                       Décision
