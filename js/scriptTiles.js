@@ -5,7 +5,7 @@ var vueBastide = new Vue({
   el: "#vueElement",
 
   data: {
-    menuElementsList: [ /* ex menulist
+    menuElementsList: [ /* 
       { titre: 'toto' },
       { titre: 'titi'}
     */],
@@ -16,24 +16,28 @@ var vueBastide = new Vue({
 
   methods: {
     openTile: function (event) {
-      // 0- Supprimer (si 2nd ouverture) la class slidePageLeft
+      // 2- Supprimer (si 2nd ouverture) la class slidePageLeft
       this.slidePageLeft = false;
-      // 1- Mettre les items du menu dans le header
+      // 3- Mettre les items du menu dans le header
       var mylimenus = document.getElementById("menutiles"), itemsMenu=[];
       mylimenus = mylimenus.getElementsByTagName("li");
       for (i=0; i<mylimenus.length; i++) {
         itemsMenu[i] = { titre: mylimenus[i].getElementsByClassName("tiletitle")[0].innerHTML };
         }
       this.menuElementsList = itemsMenu;
-      // 2- Masquer les tiles
+      // 4- Masquer les tiles
       this.tilesVisible = false;
-      // 3- Afficher la page 
+      // 5- Afficher la page 
       this.tileW8 = true;
     },
     closeTile: function (event) {
       this.menuElementsList = {};
       this.tilesVisible = true;
       this.slidePageLeft = true;
+    },
+    affectRoute: function (event) {
+      this.$route.params.pathparam = "Nicolas",
+      console.log(this.$route.params.pathparam);
     }
   },
   
