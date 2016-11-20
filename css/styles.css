@@ -152,10 +152,15 @@ header a {
   height: 1em;
   position: absolute;
   top: .75em;
-  right: .75em;
+  left: .75em;
   cursor: pointer;
   line-height: .8em;
   text-align: center
+}
+
+.close-button a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .tile {

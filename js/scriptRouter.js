@@ -1,5 +1,6 @@
 // 1. Define route components.
 // These can be imported from other files
+// And these will be imported from other files
   const BastidePage = { template: '<div>Bastide page {{ $route.params.pathparam }}</div>' }
 
 // 2. Define some routes

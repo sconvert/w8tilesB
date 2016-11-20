@@ -13,8 +13,9 @@
 
 <body>
 
-  <span id="vueElement"> <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
-    <!-- span because div breaks div content... -->
+  <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
+  <!-- span because div breaks div content... -->
+  <span id="vueElement">
     
   <!-- 
     HEADER
@@ -24,25 +25,29 @@
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
             <li v-on:click="affectRoute">Bastide Header</li>
-            <template v-for='(item, index) in menuElementsList'>
-              <li><a href="">{{ item.titre }}</a></li>
+            <div v-if="tilesVisible"></div>
+            <template v-else v-for="item in bastidePages">
+              <li><router-link :to="item.link">{{ item.titre }}</router-link></li>
             </template>
+            <!-- router-link -->
           </ul>
       </div>
     </header>
+    
 
     <!-- 
       PAGE CONTENU
     -->
 
     <div class="demo-wrapper">
-      <div  id="bastideContent">
-        <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page"> <!-- r-page  -->
-            <div v-on:click="closeTile" class="my-close-button close-button">x</div>
+      <div id="bastideContent">
+        <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page"> 
+            <div v-on:click="closeTile" class="my-close-button close-button">
+              <router-link to="/" exact>&#8592;</router-link>
+            </div>
             <router-view></router-view>
         </div>
       </div>
-
 
     <!-- 
       TILES
@@ -52,43 +57,39 @@
         <div id="menutiles">
         <!-- BASTIDE série tuiles menu haut -->
           <transition name="tile-fade">
+            
             <ul class="tiles" id="BastideTiles" v-if="tilesVisible">
+              
               <div class="col1bmh clearfix">
-                <router-link to="/bastide-access">
-                  <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access" id="tile1">
-                    <p class="tiletitle">Bastide access</p>
-                    <p class="tilecontent"></p>
+                <router-link :to="bastidePages[0].link">
+                  <li v-on:click="openTile" :class="bastidePages[0].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[0].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[0].titre }}</p>
                   </li>
                 </router-link>
               </div>
-
+              
               <div class="col2bmh clearfix">
-                <router-link to="/aide-decision">
-                  <li v-on:click="openTile" class="tileBastide tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil">
-                    <p class="tiletitle">Outil d'aide à la décision</p>
-                    <p class="tilecontent">
-                      Décision
-                    </p>
+                <router-link :to="bastidePages[1].link">
+                  <li v-on:click="openTile" :class="bastidePages[1].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[1].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[1].titre }}</p>
                   </li>
                 </router-link>
 
-                <router-link to="/historique-patients">
-                  <li v-on:click="openTile" class="tileBastide tile tile-small last tile-3bmh" data-page-type="r-page" data-page-name="bastide-historique">
-                    <p class="tiletitle">Historique des patients confiés</p>
-                    <p class="tilecontent">
-                      Historique
-                    </p>
+                <router-link :to="bastidePages[2].link">
+                  <li v-on:click="openTile" :class="bastidePages[2].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[2].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[2].titre }}</p>
                   </li>
                 </router-link>
               </div>
 
               <div class="col3bmh clearfix">
-                <router-link to="/discussions">
-                  <li v-on:click="openTile" class="tileBastide tile tile-big last tile-4bmh" data-page-type="r-page" data-page-name="bastide-discussion">
-                    <p class="tiletitle">Discussion</p>
-                    <p class="tilecontent">
-                      Blah blah
-                    </p>
+                <router-link :to="bastidePages[3].link">
+                  <li v-on:click="openTile" :class="bastidePages[3].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[3].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[3].titre }}</p>
                   </li>
                 </router-link>
               </div>

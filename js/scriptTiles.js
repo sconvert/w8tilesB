@@ -5,10 +5,12 @@ var vueBastide = new Vue({
   el: "#vueElement",
 
   data: {
-    menuElementsList: [ /* 
-      { titre: 'toto' },
-      { titre: 'titi'}
-    */],
+    bastidePages: [
+        { titre: "Accès Bastide", link: "bastide-access", classe: "tile-big tile-1bmh"},
+        { titre: "Aide à la décision", link: "aide-decision", classe: "tile-small tile-2bmh"},
+        { titre: "Historique patients", link: "historique-patients", classe: "tile-small last tile-3bmh"},
+        { titre: "Discussions", link: "discussions", classe: "tile-big last tile-4bmh"}
+      ],
     tilesVisible: true,
     tileW8: false,
     slidePageLeft: false
@@ -18,24 +20,17 @@ var vueBastide = new Vue({
     openTile: function (event) {
       // 2- Supprimer (si 2nd ouverture) la class slidePageLeft
       this.slidePageLeft = false;
-      // 3- Mettre les items du menu dans le header
-      var mylimenus = document.getElementById("menutiles"), itemsMenu=[];
-      mylimenus = mylimenus.getElementsByTagName("li");
-      for (i=0; i<mylimenus.length; i++) {
-        itemsMenu[i] = { titre: mylimenus[i].getElementsByClassName("tiletitle")[0].innerHTML };
-        }
-      this.menuElementsList = itemsMenu;
-      // 4- Masquer les tiles
+      // 3- Masquer les tiles
       this.tilesVisible = false;
-      // 5- Afficher la page 
+      // 4- Afficher la page 
       this.tileW8 = true;
     },
     closeTile: function (event) {
-      this.menuElementsList = {};
       this.tilesVisible = true;
       this.slidePageLeft = true;
+      this.$route.params.pathparam = "";
     },
-    affectRoute: function (event) {
+    affectRoute: function (event) { // Test
       this.$route.params.pathparam = "Nicolas",
       console.log(this.$route.params.pathparam);
     }
