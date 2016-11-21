@@ -4,99 +4,123 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  
+
   <title>Vue + Router</title>
 
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/transition.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body>
 
-  <span id="vueElement"> <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
-    <!-- span because div breaks div content... -->
-    
-  <!-- 
+  <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
+  <!-- span because div breaks div content... -->
+  <span id="vueElement">
+
+  <!--
     HEADER
-  -->  
+  -->
 
     <header>
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
-            <li v-on:click="affectRoute">Bastide Header</li>
-            <template v-for='(item, index) in menuElementsList'>
-              <li><a href="">{{ item.titre }}</a></li>
+            <li v-on:click="affectRoute"><img src="images/94x42.png" title="LOGO"></li>
+            <div v-if="tilesVisible"></div>
+            <template v-else v-for="item in bastidePages">
+              <li><router-link :to="item.link">{{ item.titre }}</router-link></li>
             </template>
+            <!-- router-link -->
           </ul>
       </div>
     </header>
 
-    <!-- 
+
+    <!--
       PAGE CONTENU
     -->
 
     <div class="demo-wrapper">
-      <div  id="bastideContent">
-        <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page"> <!-- r-page  -->
-            <div v-on:click="closeTile" class="my-close-button close-button">x</div>
+      <div id="bastideContent">
+        <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page">
+            <div v-on:click="closeTile" class="my-close-button close-button">
+              <router-link to="/" exact>&#8592;</router-link>
+            </div>
             <router-view></router-view>
         </div>
       </div>
 
-
-    <!-- 
+    <!--
       TILES
-    -->  
+    -->
 
       <div class="dashboard clearfix">
         <div id="menutiles">
         <!-- BASTIDE série tuiles menu haut -->
           <transition name="tile-fade">
+
             <ul class="tiles" id="BastideTiles" v-if="tilesVisible">
+
               <div class="col1bmh clearfix">
-                <router-link to="/bastide-access">
-                  <li v-on:click="openTile" class="tileBastide tile tile-big tile-1bmh" data-page-type="r-page" data-page-name ="bastide-access" id="tile1">
-                    <p class="tiletitle">Bastide access</p>
-                    <p class="tilecontent"></p>
+                <router-link :to="bastidePages[0].link">
+                  <li v-on:click="openTile" :class="bastidePages[0].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[0].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[0].titre }}</p>
                   </li>
                 </router-link>
               </div>
 
               <div class="col2bmh clearfix">
-                <router-link to="/aide-decision">
-                  <li v-on:click="openTile" class="tileBastide tile tile-small tile-2bmh" data-page-type="r-page" data-page-name ="bastide-outil">
-                    <p class="tiletitle">Outil d'aide à la décision</p>
-                    <p class="tilecontent">
-                      Décision
-                    </p>
+                <router-link :to="bastidePages[1].link">
+                  <li v-on:click="openTile" :class="bastidePages[1].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[1].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[1].titre }}</p>
                   </li>
                 </router-link>
 
-                <router-link to="/historique-patients">
-                  <li v-on:click="openTile" class="tileBastide tile tile-small last tile-3bmh" data-page-type="r-page" data-page-name="bastide-historique">
-                    <p class="tiletitle">Historique des patients confiés</p>
-                    <p class="tilecontent">
-                      Historique
-                    </p>
+                <router-link :to="bastidePages[2].link">
+                  <li v-on:click="openTile" :class="bastidePages[2].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[2].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[2].titre }}</p>
                   </li>
                 </router-link>
               </div>
 
               <div class="col3bmh clearfix">
-                <router-link to="/discussions">
-                  <li v-on:click="openTile" class="tileBastide tile tile-big last tile-4bmh" data-page-type="r-page" data-page-name="bastide-discussion">
-                    <p class="tiletitle">Discussion</p>
-                    <p class="tilecontent">
-                      Blah blah
-                    </p>
+                <router-link :to="bastidePages[3].link">
+                  <li v-on:click="openTile" :class="bastidePages[3].classe" class="tileBastide tile">
+                    <p class="tiletitle">{{ bastidePages[3].titre }}</p>
+                    <p class="tilecontent">Contenu de {{ bastidePages[3].titre }}</p>
                   </li>
                 </router-link>
               </div>
-              
+
             </ul>
           </transition>
         </div> <!-- Menu tiles -->
-      </div><!--end dashboard-->
+
+
+      <!--  <div id="hometiles">
+          <ul class="tiles">
+            <div class="col13bmh clearfix">
+                <li class="tile tile-small tile-2bmh">
+                    <img src="images/344x377.png">
+                </li>
+                <li class="tile tile-small tile-2bmh">
+                    <img src="images/344x377.png">
+                </li>
+            </div>
+            <div class="col23bmh clearfix">
+              <li class="tile tile-small tile-2bmh">
+                  <img src="images/596x766.png">
+              </li>
+            </div>
+
+          </ul>
+        </div> -->
+      </div>
+
+      <!--end dashboard-->
     </div>
   </span> <!-- end vue element -->
 

@@ -32,6 +32,7 @@ body {
   width: 100%;
   height: 100%;
   line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 16px;
   background-color: #eee;
@@ -44,7 +45,7 @@ ul {
 
 header {
   background-color: rgba(0,0,0,0.2);
-  height: 35px;
+  height: 42px;
   line-height: 35px;
   padding: 0 30px;
   color: white;
@@ -108,7 +109,7 @@ header a {
   font-weight: 300;
   position: absolute;
   right: 0;
-  top: 35px; /* 0 */
+  top: 42px; /* 0 */
   left:0;
   bottom:0;
   opacity: 0;
@@ -152,10 +153,15 @@ header a {
   height: 1em;
   position: absolute;
   top: .75em;
-  right: .75em;
+  left: .75em;
   cursor: pointer;
   line-height: .8em;
   text-align: center
+}
+
+.close-button a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .tile {
@@ -407,7 +413,10 @@ header a {
 @media screen and (min-width: 43.75em) {
   .col1bmh,
   .col2bmh,
-  .col3bmh {
+  .col3bmh,
+  .col13bmh,
+  .col23bmh
+ {
     float: left;
     margin-right: 1%;
   }
@@ -419,6 +428,14 @@ header a {
 
   .col2bmh {
     width: 49%
+  }
+
+  .col13bmh {
+    width: 32%
+  }
+
+  .col23bmh {
+    width: 65%
   }
 
   .page-title{
