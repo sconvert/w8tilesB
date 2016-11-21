@@ -44,7 +44,7 @@
       <div id="bastideContent">
         <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page">
             <div v-on:click="closeTile" class="my-close-button close-button">
-              <router-link to="/" exact>&#8592;</router-link>
+              <router-link to="/" exact><img src="images/bastide-back.png" title="Home"></router-link>
             </div>
             <router-view></router-view>
         </div>
@@ -100,24 +100,27 @@
         </div> <!-- Menu tiles -->
 
 
-      <!--  <div id="hometiles">
-          <ul class="tiles">
-            <div class="col13bmh clearfix">
-                <li class="tile tile-small tile-2bmh">
-                    <img src="images/344x377.png">
+        <div id="hometiles">
+          <transition name="tile-fade">
+            <ul class="tiles" v-if="tilesVisible">
+              <div class="col13bmh clearfix">
+                  <li class="tile tile-big tile-13bmh">
+                      <img src="images/344x377.png">
+                  </li>
+                  <li class="tile tile-big tile-13bmh">
+                      <img src="images/344x377.png">
+                  </li>
+              </div>
+              <div class="col23bmh clearfix">
+                <li class="tile tile-big tile-23bmh">
+                    <img src="images/596x766.png">
                 </li>
-                <li class="tile tile-small tile-2bmh">
-                    <img src="images/344x377.png">
-                </li>
-            </div>
-            <div class="col23bmh clearfix">
-              <li class="tile tile-small tile-2bmh">
-                  <img src="images/596x766.png">
-              </li>
-            </div>
+              </div>
 
-          </ul>
-        </div> -->
+            </ul>
+          </transition>
+        </div>
+
       </div>
 
       <!--end dashboard-->

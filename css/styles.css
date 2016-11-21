@@ -88,6 +88,7 @@ header a {
 }
 
 
+
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -265,10 +266,19 @@ header a {
   color: white
 }
 
+.tile-13bmh, .tile-23bmh {
+  height: 100%;
+  background-color: rgba(0,173,255,0);;
+}
+/*.tile-13bmh, .tile-23bmh {
+  background-color: #76ACD6;
+  color: white
+}
+
 .tile-1bmh:hover, .tile-2bmh:hover, .tile-3bmh:hover, .tile-4bmh:hover {
   background-color: #2A9FD8;
   color: white
-}
+}*/
 
 
 /* slide text inside tile up */
@@ -435,7 +445,7 @@ header a {
   }
 
   .col23bmh {
-    width: 65%
+    width: 66%
   }
 
   .page-title{
@@ -452,11 +462,25 @@ header a {
 @media screen and (min-width: 64em) {
   .col1bmh,
   .col2bmh,
-  .col3bmh {
+  .col3bmh
+ {
     float: left;
     margin-right: .5%;
     width: 31%
   }
+
+  .col13bmh
+  {
+     float: left;
+     margin-right: .5%;
+     width: 31%
+   }
+
+   .col23bmh  {
+        float: left;
+        margin-right: .5%;
+        width: 62%
+    }
 
   .col3bmh {
     margin-right: 0
@@ -465,6 +489,15 @@ header a {
   .col1bmh {
     margin-left: 2em
   }
+
+  .col13bmh {
+    margin-left: 2em
+  }
+
+  .col23bmh {
+    margin-right: 0
+  }
+
   .page-title{
     font-size:3.5em;
   }
