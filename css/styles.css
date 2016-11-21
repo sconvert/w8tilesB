@@ -35,7 +35,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 16px;
-  background-color: #eee;
+  /* background-color: #eee; */
   background-size: 100% 100%
 }
 
@@ -152,7 +152,7 @@ header a {
   font-size: 1.5em;
   width: 1em;
   height: 1em;
-  position: absolute;
+  /* position: absolute;*/
   top: .75em;
   left: .75em;
   cursor: pointer;
@@ -527,7 +527,7 @@ BASTIDE
   float: left;
 }
 
-.menuBastideDiv li a {
+.menuBastideLi a {
     display: block;
     color: white;
     text-align: center;
@@ -535,7 +535,7 @@ BASTIDE
     text-decoration: none;
 }
 
-.menuBastideDiv li a:hover {
+.menuBastideLi a:hover {
     background-color: cornFlowerBlue;
 }
 

@@ -25,12 +25,11 @@
     <header>
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
-            <li v-on:click="affectRoute"><img src="images/94x42.png" title="LOGO"></li>
-            <div v-if="tilesVisible"></div>
+            <li v-on:click="closeTile"><router-link to="/" exact><img src="images/94x42.png" title="LOGO"></router-link></li>
+            <div v-if="tilesVisible"></div> <!-- Only for v-else... -->
             <template v-else v-for="item in bastidePages">
-              <li><router-link :to="item.link">{{ item.titre }}</router-link></li>
+              <li class="menuBastideLi"><router-link :to="item.link">{{ item.titre }}</router-link></li>
             </template>
-            <!-- router-link -->
           </ul>
       </div>
     </header>
@@ -43,10 +42,10 @@
     <div class="demo-wrapper">
       <div id="bastideContent">
         <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page">
-            <div v-on:click="closeTile" class="my-close-button close-button">
-              <router-link to="/" exact><img src="images/bastide-back.png" title="Home"></router-link>
-            </div>
-            <router-view></router-view>
+          <div v-on:click="closeTile" class="my-close-button close-button">
+            <router-link to="/" exact><img src="images/bastide-back.png" title="Home"></router-link>
+          </div>
+          <router-view></router-view>
         </div>
       </div>
 
