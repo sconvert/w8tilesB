@@ -22,7 +22,7 @@ var vueBastide = new Vue({
       this.slidePageLeft = false;
       // 3- Masquer les tiles
       this.tilesVisible = false;
-      // 4- Afficher la page 
+      // 4- Afficher la page
       this.tileW8 = true;
     },
     closeTile: function (event) {
@@ -35,6 +35,6 @@ var vueBastide = new Vue({
       console.log(this.$route.params.pathparam);
     }
   },
-  
+
   router: bastideRouter
 })
