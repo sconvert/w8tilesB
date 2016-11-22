@@ -2,11 +2,17 @@
 [Pages projet](https://sconvert.github.io/w8tilesB/)
 
 #Utilisation
-Sans serveur :
+Lancer le serveur :
 ```
 npm install
 node server.js
 ```
+
+#Notes
+1- Je vire history qui ne fonctionne pas avec les gh-pages.
+Ca marche en local : dans scriptRouter.js, enlever la remarque devant ```   mode: 'history', ```
+
+2- Attention au cache ? 
 
 #Ressources
 [Vue](https://vuejs.org/v2/guide/)
