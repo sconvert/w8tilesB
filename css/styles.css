@@ -535,6 +535,10 @@ BASTIDE
     text-decoration: none;
 }
 
+.router-link-active {
+  background-color: #336083;
+}
+
 .menuBastideLi a:hover {
     background-color: cornFlowerBlue;
 }

@@ -7,7 +7,7 @@ var vueBastide = new Vue({
 
   data: {
     bastidePages: [
-        { titre: "Accès Bastide", link: "bastide-access", classe: "tile-big tile-1bmh"},
+        { titre: "Accès Bastide", link: "bastide-access", classe: "tile-big tile-1bmh", activeClass: 'bactive'},
         { titre: "Aide à la décision", link: "aide-decision", classe: "tile-small tile-2bmh"},
         { titre: "Historique patients", link: "historique-patients", classe: "tile-small last tile-3bmh"},
         { titre: "Discussions", link: "discussions", classe: "tile-big last tile-4bmh"}

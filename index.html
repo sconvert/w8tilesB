@@ -26,7 +26,7 @@
     <header>
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
-            <li><router-link to="/" exact><img src="images/94x42.png" title="LOGO"></router-link></li>
+            <li><router-link :to="{ name: 'home' }"><img src="images/94x42.png" title="LOGOI"></router-link></li>
             <div v-if="tilesVisible"></div> <!-- Only for v-else... -->
             <template v-else v-for="item in bastidePages">
               <li class="menuBastideLi"><router-link :to="item.link">{{ item.titre }}</router-link></li>
