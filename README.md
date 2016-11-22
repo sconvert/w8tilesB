@@ -1,6 +1,13 @@
 #Lien vers les pages projet
 [Pages projet](https://sconvert.github.io/w8tilesB/)
 
+#Utilisation
+Sans serveur :
+```
+npm install
+node server.js
+```
+
 #Ressources
 [Vue](https://vuejs.org/v2/guide/)
 [Axios](https://github.com/mzabriskie/axios)
