@@ -1,0 +1,25 @@
+{
+  "name": "w8tiles",
+  "version": "1.0.0",
+  "description": "A test server",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "^3.5.0",
+    "serve-static": "^1.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sconvert/w8tilesB.git"
+  },
+  "author": "Webians",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sconvert/w8tilesB/issues"
+  },
+  "homepage": "https://github.com/sconvert/w8tilesB#readme"
+}

@@ -1,3 +1,4 @@
+
 // Only one Vue because I couldn't use router with links in one Vue and content in another
 // Beside I couldn't find any reason why I shouldn't use only 1 Vue.
 

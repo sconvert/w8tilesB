@@ -16,6 +16,7 @@
 
   <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
   <!-- span because div breaks div content... -->
+
   <span id="vueElement">
 
   <!--
@@ -25,7 +26,7 @@
     <header>
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
-            <li v-on:click="closeTile"><router-link to="/" exact><img src="images/94x42.png" title="LOGO"></router-link></li>
+            <li><router-link to="/" exact><img src="images/94x42.png" title="LOGO"></router-link></li>
             <div v-if="tilesVisible"></div> <!-- Only for v-else... -->
             <template v-else v-for="item in bastidePages">
               <li class="menuBastideLi"><router-link :to="item.link">{{ item.titre }}</router-link></li>
@@ -42,7 +43,7 @@
     <div class="demo-wrapper">
       <div id="bastideContent">
         <div :class="{ 'tileW8': tileW8, 'slidePageLeft': slidePageLeft  }" class="bastide-content-page r-page">
-          <div v-on:click="closeTile" class="my-close-button close-button">
+          <div class="my-close-button close-button">
             <router-link to="/" exact><img src="images/bastide-back.png" title="Home"></router-link>
           </div>
           <router-view></router-view>
@@ -125,6 +126,7 @@
       <!--end dashboard-->
     </div>
   </span> <!-- end vue element -->
+
 
   <script src="js/vendor/vue.js"></script>
   <script src="js/vendor/vue-router.js"></script>
