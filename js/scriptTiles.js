@@ -14,22 +14,30 @@ var vueBastide = new Vue({
       ],
     tilesVisible: true,
     tileW8: false,
-    slidePageLeft: false
+    slidePageLeft: false,
+    contentPage: ""
   },
 
   methods: {
-    openTile: function (event) {
+    openTile: function (blink) {
+      //postAxios(blink);
+      //console.log("param ? " + blink);
       // 2- Supprimer (si 2nd ouverture) la class slidePageLeft
       this.slidePageLeft = false;
       // 3- Masquer les tiles
       this.tilesVisible = false;
       // 4- Afficher la page
       this.tileW8 = true;
+
     },
     closeTile: function (event) {
       this.tilesVisible = true;
       this.slidePageLeft = true;
       this.$route.params.pathparam = "";
+    },
+    changePageContent: function(content) {
+      console.log("OK, je change content pour " + content);
+      this.contentPage = content;
     },
     affectRoute: function (event) { // Test
       this.$route.params.pathparam = "Nicolas",

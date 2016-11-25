@@ -1,6 +1,12 @@
 #Lien vers les pages projet
 [Pages projet](https://sconvert.github.io/w8tilesB/)
 
+Il faudra sans doute utiliser rapidement un autre serveur :
+Celui de Clem
+https://www.heroku.com/ gratuit - git - 12h d'upload/j
+
+https://github.com/nodejs/node-v0.x-archive/wiki/Node-Hosting
+
 #Utilisation
 Lancer le serveur :
 ```
