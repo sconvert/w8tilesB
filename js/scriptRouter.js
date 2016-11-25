@@ -13,17 +13,14 @@ function extCloseTile (to, from) {
 };
 
 function runAxios(to, from) {
-  console.log(to.path);
-  var contenu = postAxios(to.path);
-  console.log("CONTENU : " + contenu);
-  
+  postAxios(to.path);
   vueBastide.openTile();
 }
 
 // 1. Define route components.
 // These can be imported from other files
 // And these will be imported from other files
-const BastidePage = { 
+const BastidePage = {
   template: '<div id="bp">Bastide page {{ $route.params.pathparam }}</div>',
   watch: {
     '$route' (to, from) {
@@ -45,36 +42,10 @@ const bastideRouter = new VueRouter({
   // Gets rid of the hash. Only with a server.
   // http://router.vuejs.org/en/essentials/history-mode.html
   mode: 'history',
-  // Marche pas avec les gh-pages, 
+  // Marche pas avec les gh-pages,
   // et path="/" ne change pas l'url.
   routes: [
-    { name: 'home', path: '/', component: BastidePage },
+    { name: 'home', path: '/', component: BastidePage }, // J'ai essayé ici aussi d'envoer des données au serveur
     { path: '/:pathparam', component: BastidePage }
-  ]/*,
-  watch: {
-    '$route': function () {
-      var self = this
-      self.isLoading = true
-      self.fetchData().then(function () {
-        self.isLoading = false
-      })
-    }
-  },
-  methods: {
-    fetchData: function (to, from) {
-      console.log("TO " + to + " from " + from + " path " + this.path);
-      var self = this
-      return axios.get('/api/posts')
-      .then(function (response) {
-        self.posts = response.data.posts
-      })
-      .catch(function (error) {
-        self.fetchError = error
-      })*/
-    //}
-//    '$route' (to, from) {
-  
-      // react to route changes...
-    //}
-//  }
+  ]
 });

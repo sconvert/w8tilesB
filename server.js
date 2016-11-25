@@ -5,14 +5,14 @@ var express = require('express'),
     open = require('open'),
     http = require('http'),
     util = require('util'); // write object in console;
-    
-    
+
+
 //////////////////////////////////////////
 ////////////  Initialisations  ///////////
 //////////////////////////////////////////
 
 var app = express(), delimiter = path.normalize("/");
-
+var data;
 // Liens statiques
 app.use('/css', express.static('css'));
 app.use('/fonts', express.static('fonts'));
@@ -51,8 +51,15 @@ app.get('/aide-decision',function(req,res){
   sendResponse(res, 200, 'post aide-decision reçu');
 })
 
-app.get('/historique-patients',function(req,res){
-  console.log("get historique-patients");
+
+app.get('/historique-patients', function(req,res){
+  console.log("get historique-patients 1-body 2-params 3-query");
+  console.log(util.inspect(req.body, false, null));
+  console.log(util.inspect(req.params, false, null));
+  console.log(util.inspect(req.query, false, null));
+//  console.log(util.inspect(req, false, null));
+  //console.log(req.body);
+
   sendResponse(res, 200, 'post historique-patients reçu');
 })
 
@@ -128,13 +135,13 @@ function pipeFileToResponse(res, file, type) {
       send404(res);
     }
   }
-  
+
   console.log("URL : " + req.url);
 })
 
 server.listen(8765);*/
 
-/* Server minimal 
+/* Server minimal
 var connect = require('connect');
 var serveStatic = require('serve-static');
 connect().use(serveStatic(__dirname)).listen(8765, function(){
