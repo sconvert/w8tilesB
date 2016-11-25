@@ -1,6 +1,7 @@
 
 // Only one Vue because I couldn't use router with links in one Vue and content in another
 // Beside I couldn't find any reason why I shouldn't use only 1 Vue.
+// Ceci dit, il y a beaucoup de choses que je ne sais pas.
 
 var vueBastide = new Vue({
   el: "#vueElement",
@@ -14,11 +15,12 @@ var vueBastide = new Vue({
       ],
     tilesVisible: true,
     tileW8: false,
-    slidePageLeft: false
+    slidePageLeft: false,
+    contentPage: ""
   },
 
   methods: {
-    openTile: function (event) {
+    openTile: function (blink) {
       // 2- Supprimer (si 2nd ouverture) la class slidePageLeft
       this.slidePageLeft = false;
       // 3- Masquer les tiles
@@ -30,10 +32,10 @@ var vueBastide = new Vue({
       this.tilesVisible = true;
       this.slidePageLeft = true;
       this.$route.params.pathparam = "";
+      //this.$route.params= { "prov": "vue" }; // Toujours pour envoyer des donnés au serveur.
     },
-    affectRoute: function (event) { // Test
-      this.$route.params.pathparam = "Nicolas",
-      console.log(this.$route.params.pathparam);
+    changePageContent: function(content) {
+      this.contentPage = content;
     }
   },
 

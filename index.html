@@ -26,7 +26,7 @@
     <header>
       <div id="menuBastide" class="menuBastideDiv">
           <ul>
-            <li><router-link :to="{ name: 'home' }"><img src="images/94x42.png" title="LOGOI"></router-link></li>
+            <li><router-link :to="{ name: 'home' }" exact><img src="images/94x42.png" title="LOGO"></router-link></li>
             <div v-if="tilesVisible"></div> <!-- Only for v-else... -->
             <template v-else v-for="item in bastidePages">
               <li class="menuBastideLi"><router-link :to="item.link">{{ item.titre }}</router-link></li>
@@ -47,6 +47,7 @@
             <router-link to="/" exact><img src="images/bastide-back.png" title="Home"></router-link>
           </div>
           <router-view></router-view>
+          <div>{{ contentPage }}</div>
         </div>
       </div>
 
@@ -62,8 +63,9 @@
             <ul class="tiles" id="BastideTiles" v-if="tilesVisible">
 
               <div class="col1bmh clearfix">
-                <router-link :to="bastidePages[0].link">
-                  <li v-on:click="openTile" :class="bastidePages[0].classe" class="tileBastide tile">
+
+                <router-link :to="bastidePages[1].link">
+                  <li :class="bastidePages[0].classe" class="tileBastide tile">
                     <p class="tiletitle">{{ bastidePages[0].titre }}</p>
                     <p class="tilecontent">Contenu de {{ bastidePages[0].titre }}</p>
                   </li>
@@ -72,14 +74,14 @@
 
               <div class="col2bmh clearfix">
                 <router-link :to="bastidePages[1].link">
-                  <li v-on:click="openTile" :class="bastidePages[1].classe" class="tileBastide tile">
+                  <li :class="bastidePages[1].classe" class="tileBastide tile">
                     <p class="tiletitle">{{ bastidePages[1].titre }}</p>
                     <p class="tilecontent">Contenu de {{ bastidePages[1].titre }}</p>
-                  </li>
+                </li>
                 </router-link>
-
-                <router-link :to="bastidePages[2].link">
-                  <li v-on:click="openTile" :class="bastidePages[2].classe" class="tileBastide tile">
+<!-- TESTS pour envoyer une query string get au server -->
+                <router-link :to= "{path: bastidePages[2].link, params: { foo: 'baar' }, body: { foo: 'biaar' }, query: { foo: 'bar' }}">
+                  <li :class="bastidePages[2].classe" class="tileBastide tile">
                     <p class="tiletitle">{{ bastidePages[2].titre }}</p>
                     <p class="tilecontent">Contenu de {{ bastidePages[2].titre }}</p>
                   </li>
@@ -88,7 +90,7 @@
 
               <div class="col3bmh clearfix">
                 <router-link :to="bastidePages[3].link">
-                  <li v-on:click="openTile" :class="bastidePages[3].classe" class="tileBastide tile">
+                  <li :class="bastidePages[3].classe" class="tileBastide tile">
                     <p class="tiletitle">{{ bastidePages[3].titre }}</p>
                     <p class="tilecontent">Contenu de {{ bastidePages[3].titre }}</p>
                   </li>
@@ -123,6 +125,7 @@
 
       </div>
 
+
       <!--end dashboard-->
     </div>
   </span> <!-- end vue element -->
@@ -130,7 +133,9 @@
 
   <script src="js/vendor/vue.js"></script>
   <script src="js/vendor/vue-router.js"></script>
+  <script src="js/vendor/axios.js"></script>
   <script src="js/scriptRouter.js"></script>
   <script src="js/scriptTiles.js"></script>
+  <script src="js/scriptAxios.js"></script>
 </body>
 </html>
