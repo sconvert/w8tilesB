@@ -15,7 +15,16 @@ node server.js
 ```
 
 #Notes
-Avancement :  
+Avancement :
+
+- tablesaw est intégré, tuile discussion.
+- Le chargement provient d'un fichier json.
+- Les classes sont créées dynamiquement et utilisables.
+- Clic sur une cellule patient affiche le formulaire de messagerie. Re-clic ferme, clic ailleurs déplace. Le redimensionnement de la page n'affecte pas le formulaire.
+- Clic sur send ferme le formulaire et affiche un message "Envoyé".
+
+A faire :
+Le tri ne fonctionne plus une fois que le formulaire a été affiché.
 Le reload ou accès direct à une page ne fonctionne pas. Je cherche à distinguer l'appel direct à la page de l'appel depuis la page déjà chargée.
 
 1- Je vire history qui ne fonctionne pas avec les gh-pages.
