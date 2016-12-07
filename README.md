@@ -12,6 +12,7 @@ Lancer le serveur :
 ```
 npm install
 node server.js
+http://localhost:8765/
 ```
 
 #Notes
