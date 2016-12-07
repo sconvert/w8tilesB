@@ -15,10 +15,13 @@ node server.js
 ```
 
 #Notes
+Avancement :  
+Le reload ou accès direct à une page ne fonctionne pas. Je cherche à distinguer l'appel direct à la page de l'appel depuis la page déjà chargée.
+
 1- Je vire history qui ne fonctionne pas avec les gh-pages.
 Ca marche en local : dans scriptRouter.js, enlever la remarque devant ```   mode: 'history', ```
 
-2- Attention au cache ? 
+
 
 #Ressources
 [Vue](https://vuejs.org/v2/guide/)

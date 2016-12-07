@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/transition.css" />
+  <link rel="stylesheet" href="css/tablesaw.css" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
@@ -16,7 +17,7 @@
 
   <!-- Do not mount Vue to <html> or <body> - mount to normal elements instead. -->
   <!-- span because div breaks div content... -->
-
+<div id="message"></div>
   <span id="vueElement">
 
   <!--
@@ -46,8 +47,12 @@
           <div class="my-close-button close-button">
             <router-link to="/" exact><img src="images/bastide-back.png" title="Home"></router-link>
           </div>
+<!--          <span  onClick="javascript:initDiscussionTable()">Test</span>-->
           <router-view></router-view>
-          <div>{{ contentPage }}</div>
+          
+          <!--<bastide-content-page></bastide-content-page>-->
+          <div v-html= "contentPage"></div>
+
         </div>
       </div>
 
@@ -64,7 +69,7 @@
 
               <div class="col1bmh clearfix">
 
-                <router-link :to="bastidePages[1].link">
+                <router-link :to="bastidePages[0].link">
                   <li :class="bastidePages[0].classe" class="tileBastide tile">
                     <p class="tiletitle">{{ bastidePages[0].titre }}</p>
                     <p class="tilecontent">Contenu de {{ bastidePages[0].titre }}</p>
@@ -131,11 +136,15 @@
   </span> <!-- end vue element -->
 
 
+<!--  <script src="js/vendor/jquery-3.1.1.min.js"></script> -->
   <script src="js/vendor/vue.js"></script>
   <script src="js/vendor/vue-router.js"></script>
-  <script src="js/vendor/axios.js"></script>
+<!--  <script src="js/vendor/axios.js"></script>-->
   <script src="js/scriptRouter.js"></script>
   <script src="js/scriptTiles.js"></script>
-  <script src="js/scriptAxios.js"></script>
+  <!--<script src="js/scriptAxios.js"></script>-->
+  <script src="js/script.js"></script>
+  <script src="js/vendor/tablesaw.js"></script>
+<!--  <script src="js/vendor/tablesaw-init.js"></script>-->
 </body>
 </html>
