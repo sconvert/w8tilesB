@@ -4,6 +4,7 @@
   "description": "A test server",
   "main": "server.js",
   "dependencies": {
+    "connect": "^3.5.0",
     "express": "~4.13.4",
     "open": "0.0.5"
   },
