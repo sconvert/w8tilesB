@@ -61,7 +61,7 @@ function runAxios(to, from) {
   var data="";
   // url (required), options (optional)
   switch (to.path) {
-    case "/discussions":
+    case ("/historique-patients" || "/bastide-access"):
 
       fetch('/temp/table.json')  
         .then(
@@ -94,17 +94,17 @@ function runAxios(to, from) {
 
         break;
    
-      case "/historique-patients":
-        vueBastide.changePageContent("Contenu historique patients");
+      case "/discussions":
+        vueBastide.changePageContent("Contenu discussions");
         break;
         
       case "/aide-decision":
         vueBastide.changePageContent("Contenu aide à la décision");
         break;
           
-      case "/bastide-access":
+  /*    case "/bastide-access":
         vueBastide.changePageContent("Contenu Accès Bastide");
-        break;
+        break; */
             
       default:
         console.log("Not found");
